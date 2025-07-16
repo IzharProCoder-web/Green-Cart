@@ -31,6 +31,11 @@ app.use("/api/cart", cartRouter);
 app.use("/api/address", addressRouter);
 app.use("/api/order", orderRouter);
 
+
+app.get('/', (req, res) => {
+  res.send("Api is working ");
+});
+
 app.listen(Port || 4000, () => {
   connectDB();
   console.log(`Server Is Running On Port http://localhost:${Port}`);
