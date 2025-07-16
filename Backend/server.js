@@ -18,7 +18,7 @@ await connectCloudinary();
 //allow multiple origin
 const allowedOrigins = [
   "https://your-frontend-app.com",
-  // "http://localhost:3000",
+  "http://localhost:3000",
 ];
 
 // Middleware configuration
