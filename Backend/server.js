@@ -13,16 +13,22 @@ import orderRouter from "./routes/orderRoutes.js";
 const app = express();
 const Port = process.env.PORT;
 
-
-await connectCloudinary()
+await connectCloudinary();
 
 //allow multiple origin
-const allowedOrigins = ["http://localhost:5173"];
+const allowedOrigins = [
+  "https://your-frontend-app.com",
+  "http://localhost:3000",
+];
 
 // Middleware configuration
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({ origin: allowedOrigins, credentials: true }));
+app.use(cors({
+  origin: allowedOrigins, // Update with deployed URL later
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true
+}));
 
 app.use("/api/user", userRouter);
 app.use("/api/seller", sellerRouter);
@@ -31,8 +37,7 @@ app.use("/api/cart", cartRouter);
 app.use("/api/address", addressRouter);
 app.use("/api/order", orderRouter);
 
-
-app.get('/', (req, res) => {
+app.get("/", (req, res) => {
   res.send("Api is working ");
 });
 
