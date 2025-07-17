@@ -25,7 +25,7 @@ const allowedOrigins = [
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
-  origin: allowedOrigins, // Update with deployed URL later
+  origin: true, // Update with deployed URL later
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true
 }));
