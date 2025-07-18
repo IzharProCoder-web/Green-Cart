@@ -13,7 +13,9 @@ import orderRouter from "./routes/orderRoutes.js";
 const app = express();
 const Port = process.env.PORT;
 
+await connectDB();
 await connectCloudinary();
+
 
 //allow multiple origin
 const allowedOrigins = [
@@ -25,7 +27,7 @@ const allowedOrigins = [
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
-  origin: true, // Update with deployed URL later
+  origin: allowedOrigins, 
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true
 }));
@@ -42,6 +44,6 @@ app.get("/", (req, res) => {
 });
 
 app.listen(Port || 4000, () => {
-  connectDB();
+  
   console.log(`Server Is Running On Port http://localhost:${Port}`);
 });
