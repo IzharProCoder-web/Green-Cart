@@ -15,8 +15,9 @@ const Login = () => {
 
     const {data} = await axios.post(`/api/user/${state}`, {
       name,email, password
-    })
+    }, {withCredentials:true})
     if(data.success) {
+      localStorage.setItem("user_token", data.token);
       toast.success(data.message)
       setUser(data.user)
       setShowUserLogin(false)

@@ -66,7 +66,7 @@ export const login = async (req, res) => {
       expiresIn: "7d",
     });
 
-    res.cookie("token", token, {
+    res.cookie("user_token", token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
       sameSite: process.env.NODE_ENV === "production" ? "none" : "strict",
@@ -75,7 +75,7 @@ export const login = async (req, res) => {
 
     return res
       .status(201)
-      .json({ success: true, user: { email: user.email, name: user.name } });
+      .json({ success: true, user: { email: user.email, name: user.name }, token });
   } catch (err) {
     console.error(err.message);
     res.status(500).json({ success: false, message: err.message });

@@ -41,7 +41,7 @@ const getCart = (products) => {
 
   const getUserAddress = async () => {
     try {
-      const { data } = await axios.get("/api/address/get");
+      const { data } = await axios.get("/api/address/get", {withCredentials:true});
       if (data.success) {
         const addresses = data.data || [];
         setAddresses(addresses);

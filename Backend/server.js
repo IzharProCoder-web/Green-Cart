@@ -24,12 +24,10 @@ await connectCloudinary();
 // Middleware configuration
 app.use(express.json());
 app.use(cookieParser());
-app.use(
-  cors({
-    origin: "https://green-cart-seven-inky.vercel.app/",
-    credentials: true,
-  })
-);
+app.use(cors({
+  origin: 'https://green-cart-seven-inky.vercel.app/', 
+  credentials: true, 
+}));
 
 app.use("/api/user", userRouter);
 app.use("/api/seller", sellerRouter);
