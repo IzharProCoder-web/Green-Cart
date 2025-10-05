@@ -45,7 +45,7 @@ const SellerLayout = () => {
           <p>Hi! Admin</p>
           <button
             onClick={() => logout()}
-            className="border rounded-full text-sm px-4 py-1"
+            className="border rounded-full text-sm px-4 py-1 cursor-pointer"
           >
             Logout
           </button>
